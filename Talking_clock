@@ -1,0 +1,89 @@
+def talking_clock():
+    
+    time = input("What is the time?: ")
+
+    ## Split time into hours and minutes
+    
+    hour_num , min_num = time.split(':')
+    
+
+    ## Figure out if it is AM or PM
+    
+    if int(hour_num) < 12:
+        meridiem = 'AM'
+        hour_call = int(hour_num)
+        
+    else:
+        meridiem = 'PM'
+        hour_call = int(hour_num)- 12 
+    
+    ## Attribute Hours to words
+    
+    hour_dic = {
+        '0' : "twelve",
+        '1' : "one",
+        '2' : "two",
+        '3' : "three",
+        '4' : "four",
+        '5' : "five",
+        '6' : "six",
+        '7' : "seven",
+        '8' : "eight",
+        '9' : "nine",
+        '10' : "ten",
+        '11' : "eleven",
+        '12' : "twelve",
+    } 
+    
+    hour_text = hour_dic[str(hour_call)]
+
+    ## Attribute Minutes to words
+    if int(min_num) < 20:
+        min_dic1 = {
+            '00' : "",
+            '1' : "oh one",
+            '2' : "oh two",
+            '3' : "oh three",
+            '4' : "oh four",
+            '5' : "oh five",
+            '6' : "oh six",
+            '7' : "oh seven",
+            '8' : "oh eight",
+            '9' : "oh nine",
+            '10' : "ten",
+            '11' : "eleven",
+            '12' : "twelve",
+            '13' : "thirteen",
+            '14' : "fourteen",
+            '15' : "fifteen",
+            '16' : "sixteen",
+            '17' : "seventeen",
+            '18' : "eighteen",
+            '19' : "nineteen"
+        }
+        min_text = min_dic1[str(min_num)]
+    
+    if int(min_num) > 20:
+        
+        min_dic2 = {
+            '2' : "twenty",
+            '3' : "thirty",
+            '4' : "forty",
+            '5' : "fifty"  
+        }
+        min_dic3 = {
+            '1' : "one",
+            '2' : "two",
+            '3' : "three",
+            '4' : "four",
+            '5' : "five",
+            '6' : "six",
+            '7' : "seven",
+            '8' : "eight",
+            '9' : "nine", 
+        }
+        
+        min_text = (min_dic2[min_num[:1]] + ' ' + min_dic3[min_num[1:]])
+    
+    ## Put together and print
+    print("It's " + hour_text + ' ' + min_text + ' ' + meridiem)
